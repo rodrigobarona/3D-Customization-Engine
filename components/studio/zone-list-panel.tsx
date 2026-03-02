@@ -194,8 +194,8 @@ function ZoneItemContent({
   zone: PersonalizationZone;
   isSelected: boolean;
   isDragOverlay?: boolean;
-  dragListeners?: Record<string, unknown>;
-  dragAttributes?: Record<string, unknown>;
+  dragListeners?: ReturnType<typeof useSortable>["listeners"];
+  dragAttributes?: ReturnType<typeof useSortable>["attributes"];
   onDelete?: () => void;
   onDuplicate?: () => void;
 }) {
