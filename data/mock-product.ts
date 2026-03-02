@@ -4,20 +4,20 @@ export const MOCK_TSHIRT: ProductConfig = {
   id: "tshirt-sporty-001",
   slug: "sporty-t-shirt",
   name: "Men's Sporty T-Shirt",
-  model_url: "/3d/Men-Regular-Apparel-Fit-Sporty-T-Shirt/men_regular_apparel_fit_sporty_t-shirt.glb",
+  model_url: "/3d/Men-Regular-Apparel-Fit-Sporty-T-Shirt/Men Sporty T-Shirt.glb",
   zones: [
     {
       id: "front_text",
       name: "Front Text",
       type: "text",
-      uv: { x: 680, y: 450, width: 700, height: 200 },
+      uv: { x: 1330, y: 1060, width: 420, height: 180 },
       constraints: {
         max_characters: 20,
         font_options: ["inter", "bebas-neue", "oswald", "roboto-condensed"],
       },
       defaults: {
         font: "Inter",
-        fontSize: 64,
+        fontSize: 72,
         fill: "#FFFFFF",
       },
     },
@@ -25,14 +25,14 @@ export const MOCK_TSHIRT: ProductConfig = {
       id: "back_name",
       name: "Back Name",
       type: "text",
-      uv: { x: 680, y: 1300, width: 700, height: 150 },
+      uv: { x: 310, y: 1060, width: 400, height: 150 },
       constraints: {
         max_characters: 15,
         font_options: ["inter", "bebas-neue", "oswald", "roboto-condensed"],
       },
       defaults: {
         font: "Inter",
-        fontSize: 56,
+        fontSize: 60,
         fill: "#FFFFFF",
       },
     },
@@ -40,7 +40,7 @@ export const MOCK_TSHIRT: ProductConfig = {
       id: "back_number",
       name: "Back Number",
       type: "number",
-      uv: { x: 800, y: 1480, width: 450, height: 350 },
+      uv: { x: 380, y: 1280, width: 260, height: 300 },
       constraints: {
         max_characters: 2,
         min_value: 0,
@@ -48,7 +48,7 @@ export const MOCK_TSHIRT: ProductConfig = {
       },
       defaults: {
         font: "Bebas Neue",
-        fontSize: 180,
+        fontSize: 200,
         fill: "#FFFFFF",
       },
     },
@@ -56,7 +56,7 @@ export const MOCK_TSHIRT: ProductConfig = {
       id: "sleeve_logo",
       name: "Sleeve Logo",
       type: "image",
-      uv: { x: 150, y: 500, width: 250, height: 250 },
+      uv: { x: 540, y: 530, width: 200, height: 200 },
       constraints: {
         max_width: 512,
         max_height: 512,
