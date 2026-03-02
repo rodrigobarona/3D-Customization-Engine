@@ -4,7 +4,7 @@ export const MOCK_TSHIRT: ProductConfig = {
   id: "tshirt-sporty-001",
   slug: "sporty-t-shirt",
   name: "Men's Sporty T-Shirt",
-  model_url: "/3d/Men-Regular-Apparel-Fit-Sporty-T-Shirt/Men Sporty T-Shirt.glb",
+  model_url: "/3d/Men-Regular-Apparel-Fit-Sporty-T-Shirt/men_regular_apparel_fit_sporty_t-shirt.glb",
   zones: [
     {
       id: "front_text",

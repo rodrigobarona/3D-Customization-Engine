@@ -11,14 +11,14 @@ interface ConfiguratorSceneProps {
 export function ConfiguratorScene({ modelUrl }: ConfiguratorSceneProps) {
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.4} />
       <directionalLight
-        position={[30, 30, 30]}
+        position={[5, 5, 5]}
         intensity={1}
         castShadow
         shadow-mapSize={[1024, 1024]}
       />
-      <directionalLight position={[-20, 15, 15]} intensity={0.3} />
+      <directionalLight position={[-3, 2, 2]} intensity={0.3} />
       <Suspense fallback={null}>
         <ConfiguratorModel modelUrl={modelUrl} />
         <Environment preset="studio" />
@@ -26,8 +26,8 @@ export function ConfiguratorScene({ modelUrl }: ConfiguratorSceneProps) {
       <OrbitControls
         enableDamping
         dampingFactor={0.05}
-        minDistance={20}
-        maxDistance={100}
+        minDistance={1.5}
+        maxDistance={6}
         maxPolarAngle={Math.PI / 1.8}
         minPolarAngle={Math.PI / 6}
         enablePan={false}
