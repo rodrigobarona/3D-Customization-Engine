@@ -12,12 +12,20 @@ export default function Page() {
           Change colors, add text, numbers, and logos.
         </p>
       </div>
-      <Link
-        href="/configurator"
-        className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-      >
-        Open Configurator
-      </Link>
+      <div className="flex gap-4">
+        <Link
+          href="/configurator"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          Open Configurator
+        </Link>
+        <Link
+          href="/studio"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background px-8 text-base font-medium text-foreground transition-colors hover:bg-accent"
+        >
+          Zone Studio
+        </Link>
+      </div>
     </div>
   );
 }

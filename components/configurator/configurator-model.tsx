@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Center } from "@react-three/drei";
 import * as THREE from "three";
 import { useTextureFromConfig } from "@/lib/hooks/use-texture-from-config";
-import { useConfiguratorStore } from "@/store/configurator-store";
 
 interface ConfiguratorModelProps {
   modelUrl: string;
@@ -13,39 +12,31 @@ interface ConfiguratorModelProps {
 export function ConfiguratorModel({ modelUrl }: ConfiguratorModelProps) {
   const { scene } = useGLTF(modelUrl);
   const texture = useTextureFromConfig();
-  const materialRef = useRef<THREE.MeshStandardMaterial | null>(null);
-  const product = useConfiguratorStore((s) => s.product);
+  const materialsRef = useRef<THREE.Material[]>([]);
 
   useEffect(() => {
-    if (!product) return;
-
+    const mats: THREE.Material[] = [];
     scene.traverse((child) => {
-      if (child instanceof THREE.Mesh && child.material) {
-        const mat = child.material as THREE.MeshStandardMaterial;
-        if (
-          mat.name === "Default_material" ||
-          mat.name === "Material" ||
-          mat.map
-        ) {
-          materialRef.current = mat;
-        }
+      if (!(child instanceof THREE.Mesh) || !child.material) return;
+      if ("map" in child.material) {
+        mats.push(child.material);
       }
     });
-  }, [scene, product]);
+    materialsRef.current = mats;
+  }, [scene]);
 
   useEffect(() => {
-    if (!materialRef.current || !texture) return;
+    if (!texture || materialsRef.current.length === 0) return;
 
-    materialRef.current.map = texture;
-    materialRef.current.needsUpdate = true;
+    for (const mat of materialsRef.current) {
+      (mat as THREE.MeshStandardMaterial).map = texture;
+      mat.needsUpdate = true;
+    }
   }, [texture]);
 
   return (
-    <primitive
-      object={scene}
-      scale={1}
-      position={[0, -1, 0]}
-      rotation={[0, 0, 0]}
-    />
+    <Center>
+      <primitive object={scene} />
+    </Center>
   );
 }
