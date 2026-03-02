@@ -1,0 +1,355 @@
+openapi: 3.0.3
+info:
+  title: 3D Customization Engine REST API
+  description: REST API v1 for the multi-tenant 3D product customization platform
+  version: 1.0.0
+
+servers:
+  - url: https://api.example.com
+    description: Production
+  - url: http://localhost:3000
+    description: Local development
+
+security:
+  - x-tenant-id: []
+
+paths:
+  /api/v1/products/{id}:
+    get:
+      summary: Get product configuration
+      description: Returns model URL, zones, colors, and fonts for a product
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Product ID or slug
+      responses:
+        '200':
+          description: Product configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductConfig'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /api/v1/generate-preview:
+    post:
+      summary: Generate preview texture
+      description: Generates a texture from zone config and returns texture URL and config hash
+      operationId: generatePreview
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TextureEngineInput'
+      responses:
+        '200':
+          description: Preview texture generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneratePreviewResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/export:
+    post:
+      summary: Export texture and assets
+      description: Exports deterministic PNG texture, vector PDF, and config JSON
+      operationId: export
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '200':
+          description: Export completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/v1/validate:
+    post:
+      summary: Validate configuration
+      description: Validates zone limits, character limits, file size, and formats
+      operationId: validate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateRequest'
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+components:
+  securitySchemes:
+    x-tenant-id:
+      type: apiKey
+      in: header
+      name: x-tenant-id
+      description: Tenant identifier (required for all requests)
+
+  schemas:
+    ProductConfig:
+      type: object
+      required:
+        - id
+        - model_url
+        - zones
+      properties:
+        id:
+          type: string
+        slug:
+          type: string
+        model_url:
+          type: string
+          format: uri
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonalizationZone'
+        colors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColorOption'
+        fonts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FontOption'
+
+    PersonalizationZone:
+      type: object
+      required:
+        - id
+        - type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [text, number, image]
+        label:
+          type: string
+        bounds:
+          $ref: '#/components/schemas/ZoneBounds'
+        max_length:
+          type: integer
+        max_value:
+          type: number
+        min_value:
+          type: number
+        allowed_formats:
+          type: array
+          items:
+            type: string
+        max_file_size_bytes:
+          type: integer
+
+    ZoneBounds:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+        width:
+          type: number
+        height:
+          type: number
+
+    ColorOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        hex:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$'
+
+    FontOption:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+          format: uri
+
+    TextureEngineInput:
+      type: object
+      required:
+        - product_id
+        - zones
+      properties:
+        product_id:
+          type: string
+        base_color:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$'
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/ZoneInput'
+
+    ZoneInput:
+      type: object
+      required:
+        - zone_id
+        - type
+      properties:
+        zone_id:
+          type: string
+        type:
+          type: string
+          enum: [text, number, image]
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: string
+              format: uri
+        font_id:
+          type: string
+        color:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$'
+
+    GeneratePreviewResponse:
+      type: object
+      required:
+        - texture_url
+        - config_hash
+      properties:
+        texture_url:
+          type: string
+          format: uri
+        config_hash:
+          type: string
+
+    ExportRequest:
+      allOf:
+        - $ref: '#/components/schemas/TextureEngineInput'
+        - type: object
+          properties:
+            format:
+              type: string
+              enum: [png, pdf, both]
+              default: both
+
+    ExportResponse:
+      type: object
+      required:
+        - texture_png_url
+        - config_json
+      properties:
+        texture_png_url:
+          type: string
+          format: uri
+        vector_pdf_url:
+          type: string
+          format: uri
+        config_json:
+          type: object
+        config_hash:
+          type: string
+
+    ValidateRequest:
+      type: object
+      required:
+        - product_id
+        - zones
+      properties:
+        product_id:
+          type: string
+        zones:
+          type: array
+          items:
+            $ref: '#/components/schemas/ZoneInput'
+
+    ValidateResponse:
+      type: object
+      required:
+        - valid
+      properties:
+        valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+
+    ValidationError:
+      type: object
+      properties:
+        path:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              code:
+                type: string
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              code:
+                type: string
+                enum: [NOT_FOUND]
+    ValidationError:
+      description: Validation failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              errors:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ValidationError'
