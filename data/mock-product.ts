@@ -56,7 +56,7 @@ export const MOCK_TSHIRT: ProductConfig = {
       id: "sleeve_logo",
       name: "Sleeve Logo",
       type: "image",
-      uv: { x: 1060, y: 530, width: 200, height: 200 },
+      uv: { x: 1410, y: 400, width: 180, height: 180 },
       constraints: {
         max_width: 512,
         max_height: 512,
