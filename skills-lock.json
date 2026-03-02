@@ -1,6 +1,26 @@
 {
   "version": 1,
   "skills": {
+    "api-designer": {
+      "source": "404kidwiz/claude-supercode-skills",
+      "sourceType": "github",
+      "computedHash": "a1db0d5fbb9aaf9f9a1d1e8e2137c5aa9d00485b31778d1e93e302abe8b097b7"
+    },
+    "asset-pipeline-3d": {
+      "source": "anthemflynn/ccmp",
+      "sourceType": "github",
+      "computedHash": "0e8dcef8184f4f592568f8f40d3476d0ac2894e6fb5c1c11637ab6087dc3a9ce"
+    },
+    "cloudflare-r2": {
+      "source": "ovachiever/droid-tings",
+      "sourceType": "github",
+      "computedHash": "79c44727cac2a729cf9f971af21d2016230c9ad23fa94c516191d9d0a651099d"
+    },
+    "drizzle-migrations": {
+      "source": "bobmatnyc/claude-mpm-skills",
+      "sourceType": "github",
+      "computedHash": "c138a68ca6e28a5c8cb9bc370e5e0b6de9a9157b94a00ed2800181514fe72129"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
@@ -11,6 +31,111 @@
       "sourceType": "github",
       "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
     },
+    "frontend-security-coder": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "dde06c1c84f5fb3c99df24af505f7b52827f44ef54f94588d3618a4295110a40"
+    },
+    "input-sanitization": {
+      "source": "dengineproblem/agents-monorepo",
+      "sourceType": "github",
+      "computedHash": "b9c3092921fea42d5fbaa5e76052c193888d029091434ca5eac3837040732abd"
+    },
+    "multi-tenant-platform-architecture": {
+      "source": "mblode/agent-skills",
+      "sourceType": "github",
+      "computedHash": "82323a1e0deac8acb4d4434745441814ae66e44f4e384cb2346e58dffd6d676c"
+    },
+    "neon-postgres": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "3f83067f367467c97b2413bd6f0aa96ff18c377d1f35954e20fcbae699c16cbf"
+    },
+    "nextjs-performance": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "computedHash": "16cf920bed00f318fb93a9a3981b1f5015d9fc42fec56e08a09e3cb2576fa239"
+    },
+    "payment-gateway-integration": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "computedHash": "e15ed394549282d1b5289d1f80506d97cd7bc2dbbcc367a2b8120b3f7d2d9b5d"
+    },
+    "playwright-e2e-testing": {
+      "source": "bobmatnyc/claude-mpm-skills",
+      "sourceType": "github",
+      "computedHash": "ce264ac6f9cbeba1fd354d4b34eac7f3758d630aabaf4b59a836e3db980c8486"
+    },
+    "postgres-drizzle": {
+      "source": "ccheney/robust-skills",
+      "sourceType": "github",
+      "computedHash": "60534e1aa880981e26360db836115df77a8e73be219c7a027e635802686b5bd9"
+    },
+    "r3f-fundamentals": {
+      "source": "bbeierle12/skill-mcp-claude",
+      "sourceType": "github",
+      "computedHash": "8513ecb7d4c447b1838abd3dc5d5ba3aa1605f31781d160838307963ff138240"
+    },
+    "r3f-materials": {
+      "source": "bbeierle12/skill-mcp-claude",
+      "sourceType": "github",
+      "computedHash": "bce8f172bf19345a745115e3b413546c2b353554d7811c8e6541c2aec67c67c4"
+    },
+    "rate-limiting-implementation": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "computedHash": "a2e6cb7f4f00e64a6f25da7871dcaee50ef9f8efb4cbf7e2d49bd616c6ccd2cf"
+    },
+    "react-three-fiber": {
+      "source": "anthemflynn/ccmp",
+      "sourceType": "github",
+      "computedHash": "b5b5bae00de961c6656349cd0ecb5302a4b85af6f85761328e3ae5aa5007c49e"
+    },
+    "secure-headers-csp-builder": {
+      "source": "patricio0312rev/skills",
+      "sourceType": "github",
+      "computedHash": "68fea5a102b9b7d2f48fa0197e51b25c04d08538629ddb8cbc08d3250c050307"
+    },
+    "shadcn-ui": {
+      "source": "jezweb/claude-skills",
+      "sourceType": "github",
+      "computedHash": "c9871cb4685898b3d5ac3dd54924a6818ca4817de5ca40d546eba06d0ada53a8"
+    },
+    "stripe-subscriptions": {
+      "source": "andrelandgraf/fullstackrecipes",
+      "sourceType": "github",
+      "computedHash": "ddd1564590525a24abe030b7a55dd4081a07a99cadaea3b10b913b45bfa0ab74"
+    },
+    "tailwind-theme-builder": {
+      "source": "jezweb/claude-skills",
+      "sourceType": "github",
+      "computedHash": "fd84027a0d97134a73054d010f3ebc0352de7d6f24567086444aa7884c24bcde"
+    },
+    "threejs-loaders": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "computedHash": "f2cceed635fd7a2119acf6e5b1a2fcba63a0e52cf2514c1830a69e4744554fcc"
+    },
+    "threejs-postprocessing": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "computedHash": "48e04ff507582a18e0d509c2738b9d9466881b00e8ca2600727910a0d52abf75"
+    },
+    "threejs-textures": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "computedHash": "772a0bfc1d64cfcbc5347d206584a8fa412983201ad7a2cfb8766097b4936db9"
+    },
+    "vercel-blob": {
+      "source": "ovachiever/droid-tings",
+      "sourceType": "github",
+      "computedHash": "a747cbd8c77489ddac4db9e77af763027e742afe420cbf36ba6c3e8a2aed2a97"
+    },
+    "vercel-networking-domains": {
+      "source": "bobmatnyc/claude-mpm-skills",
+      "sourceType": "github",
+      "computedHash": "71bc376a7c5dba9aaf517f76bcb8818991b2d12ff1583ed94e018b45e48c8d58"
+    },
     "vercel-react-best-practices": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
@@ -20,6 +145,26 @@
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
       "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    },
+    "workos": {
+      "source": "workos/skills",
+      "sourceType": "github",
+      "computedHash": "8180a9ffe993d95f396c2c33368ee5f4d1ed828008440ae866930100e0a2d36f"
+    },
+    "workos-authkit-nextjs": {
+      "source": "workos/skills",
+      "sourceType": "github",
+      "computedHash": "16742865cb5a00b3392638e7f1a48200617e8f943695be516a20f653380b8075"
+    },
+    "zod": {
+      "source": "bobmatnyc/claude-mpm-skills",
+      "sourceType": "github",
+      "computedHash": "684e38d3b947e6a36cab88e8b0aef3ab1585ae81b3be663d14629b385f3f9395"
+    },
+    "zustand": {
+      "source": "lobehub/lobehub",
+      "sourceType": "github",
+      "computedHash": "ef9a6e8dea1837804918bc6533e52b6e05b4589dbe9c26af692111413328a13c"
     }
   }
 }
