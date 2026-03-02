@@ -4,6 +4,7 @@ import { useCallback, useRef } from "react";
 import Link from "next/link";
 import { useStudioStore } from "@/store/studio-store";
 import { ProductConfigSchema } from "@/lib/schemas";
+import { STUDIO_STORAGE_KEY } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
@@ -21,8 +22,6 @@ import {
   Save,
   ArrowLeft,
 } from "lucide-react";
-
-const STORAGE_KEY = "studio:product-config";
 
 export function StudioToolbar() {
   const activeTool = useStudioStore((s) => s.activeTool);
@@ -127,7 +126,7 @@ export function StudioToolbar() {
       fonts: state.fonts,
     };
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+      localStorage.setItem(STUDIO_STORAGE_KEY, JSON.stringify(config));
       toast.success("Saved to local storage");
     } catch {
       toast.error("Failed to save");
