@@ -25,7 +25,7 @@ export default function ConfiguratorCanvas() {
           toneMappingExposure: 1,
         }}
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 3], fov: 45 }}
+        camera={{ position: [0, 0, 50], fov: 45, near: 0.1, far: 500 }}
         className="touch-none"
       >
         <Suspense fallback={null}>
